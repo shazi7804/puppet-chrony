@@ -1,0 +1,18 @@
+
+<% if @servers.is_a?(Hash) then @servers.keys.sort.each do |server| -%>
+server <%= server %> <%= @servers[server].join(' ') %>
+<% end else Array(@servers).each do |server| -%>
+server <%= server %> iburst
+<% end end -%>
+
+keyfile <%= @config_keys %>
+commandkey 1
+driftfile <%= @driftfile %>
+log tracking measurements statistics
+logdir <%= @logdir %>
+maxupdateskew 100.0
+dumponexit
+dumpdir /var/lib/chrony
+logchange 0.5
+hwclockfile /etc/adjtime
+rtcsync
